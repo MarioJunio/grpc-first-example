@@ -32,7 +32,6 @@ message MaximumRequest {
 
 message MaximumResponse {
   int32 response = 1;
-  string description = 2;
 }
 
 service CalculatorService {
