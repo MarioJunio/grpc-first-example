@@ -1,0 +1,46 @@
+syntax = "proto3";
+
+package calculator;
+
+option java_package = "br.com.mj.calculator";
+option java_multiple_files = true;
+
+message CalculatorRequest {
+  double n1 = 1;
+  double n2 = 2;
+}
+
+message PrimeRequest {
+  int32 prime = 1;
+}
+
+message CalculatorResponse {
+  double result = 1;
+}
+
+message AverageRequest {
+  int32 number = 1;
+}
+
+message AverageResponse {
+  double result = 1;
+}
+
+message MaximumRequest {
+  int32 number = 1;
+}
+
+message MaximumResponse {
+  int32 response = 1;
+}
+
+service CalculatorService {
+  rpc sum(CalculatorRequest) returns (CalculatorResponse) {};
+  rpc subtract(CalculatorRequest) returns (CalculatorResponse) {};
+  rpc multiply(CalculatorRequest) returns (CalculatorResponse) {};
+  rpc division(CalculatorRequest) returns (CalculatorResponse) {};
+  rpc prime(PrimeRequest) returns (stream CalculatorResponse) {};
+  rpc avg(stream AverageRequest) returns (AverageResponse) {};
+  rpc findMaximum(stream MaximumRequest) returns (stream MaximumResponse) {};
+}
+
